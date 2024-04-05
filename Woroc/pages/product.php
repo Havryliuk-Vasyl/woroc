@@ -23,7 +23,6 @@
                 <ul>
                     <li><a href="../index.php">Головна</a></li>
                     <li><a href="catalog.php">Каталог</a></li>
-                    <!-- <li><a href="search.html">Пошук</a></li> -->
                     <li><a href="cart.php">Кошик</a></li>
                 </ul>
             </div>
@@ -55,7 +54,6 @@
                     <div class="colitems">
                         <div class="col-item"><a href="../index.php">Головна</a></div>
                         <div class="col-item"><a href="catalog.php">Каталог</a></div>
-                        <!-- <div class="col-item"><a href="search.html">Пошук</a></div> -->
                         <div class="col-item"><a href="cart.php">Кошик</a></div>
                     </div>
                 </div>
