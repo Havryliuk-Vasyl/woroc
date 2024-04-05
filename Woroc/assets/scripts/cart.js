@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="product-delete" data-index="${index}">Видалити з кошика</div>
             `;
             cartContainer.appendChild(cartItem);
-
-            totalSum += item.price;
+            totalSum += Number(item.price);
             
             
         });
@@ -63,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         totalSumElement.classList.add('price');
         totalSumElement.textContent = `Загальна сума: ${totalSum} ГРН.`;
         cartPriceAndBuying.appendChild(totalSumElement);
-
+        console.log(totalSum);
         const buyButton = document.createElement('div');
         buyButton.classList.add('buy');
         buyButton.addEventListener('click', function () {
