@@ -218,7 +218,7 @@
       padding: 0.5em;
       padding-top: 1em; 
       text-align: center;
-      max-width: 10em;
+      max-width: auto;
   }
   
   .main .products .playvinil .playvinil-name:hover{
@@ -423,7 +423,6 @@
           position: relative;
           justify-content: center;   
       }
-  
   
       .menu-toggle {
           display: flex;

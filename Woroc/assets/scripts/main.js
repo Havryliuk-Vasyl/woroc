@@ -46,31 +46,24 @@ function addToCart(event) {
     const productPrice = parseFloat(productContainer.querySelector('.playvinil-price').innerText);
     const productImage = productContainer.querySelector('.playvinil-photo img').src;
     
-    // Отримання або створення кошика в локальному сховищі
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Перевірка, чи товар вже є в кошику
     const existingItem = cart.find(item => item.id === productId);
 
-    // Додавання нового товару до кошика
     cart.push({
         id: productId,
         name: productName,
         price: productPrice,
         image: productImage,
     });
-
-    // Вивід інформації про товар в консоль для перевірки
     
     console.log(`${productId}`);
     console.log(`${productName}`);
     console.log(`${productPrice}`);
     console.log(`${productImage}`);
 
-    // Збереження оновленого кошика в локальному сховищі
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Оповіщення користувача про додавання товару
     alert(`Товар "${productName}" додано в кошик.`);
 }
 
@@ -81,18 +74,16 @@ function goToProduct(event) {
     const productPrice = parseFloat(productContainer.querySelector('.playvinil-price').innerText);
     const productImage = productContainer.querySelector('.playvinil-photo img').src;
 
-    // Збереження даних на сторінці товару в локальному сховищі
     localStorage.removeItem('productPage');
     let productPage = JSON.parse(localStorage.getItem('productPage')) || [];
     productPage.push({
         id: productId,
         name: productName,
         price: productPrice,
-        image: productImage,    // Використовуємо правильну змінну
+        image: productImage,
     });
 
     localStorage.setItem('productPage', JSON.stringify(productPage));
 
-    // Перехід на сторінку товару
     window.location.href = 'pages/product.html';
 }
