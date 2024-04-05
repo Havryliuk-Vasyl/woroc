@@ -9,62 +9,20 @@
     <script src="assets/scripts/main.js"></script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="#"><img src="assets/images/Woroc-Logo.png" alt="Vinyl record Woroc." style="max-width: 100px; max-height: 60px;"></a>
-        </div>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="menu">
-            <div class="navigation">
-                <ul>
-                    <li><a href="index.php">Головна</a></li>
-                    <li><a href="pages/catalog.php">Каталог</a></li>
-                    <li><a href="pages/cart.php">Кошик</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <?php
+    include("templates/header.php");
+    ?>
     <div class="main">
         <div>
-            <h1>Woroc.</h1>
-            <p>Woroc. - це онлайн магазин продажу вінілових програвачів.</p>
-            <p>Тут зібрані найкращі моделі програвачів, які тільки існують.</p>
-            <p>Вініловий програвач - пристрій, що відтворює записи з вінілових платівок з використанням електричного звукознімача.</p>
+            <h1>Woroc. - ваш ідеальний вибір вінілових програвачів</h1>
+            <p>Ласкаво просимо до Woroc. - вашого найкращого джерела вінілових програвачів у Інтернеті. Ми спеціалізуємося на наданні доступу до найякісніших та найбільш ефективних моделей програвачів на ринку.</p>
+            <p>Наша місія - забезпечити вам найкращий звук та задоволення від музики. У нашому асортименті ви знайдете широкий вибір пристроїв від провідних виробників, які гарантують якість та надійність.</p>
+            <p>Відкрийте для себе чудовий світ вінілових платівок з нашими програвачами. Незалежно від вашого музичного смаку або бюджету, у нас є ідеальний пристрій саме для вас.</p>
+            <p>Нехай ваша музика звучить краще за все з вініловими програвачами Woroc. Зробіть свій вибір сьогодні та насолоджуйтеся неперевершеним звуком вашої улюбленої музики.</p>
         </div>
     </div>
     <?php 
-    include("assets/database/db.php");
+    include("templates/footer.php");
     ?>
-    <footer class="footer">
-        <div class="footertop">
-            <div class="container">
-                <div class="firstsection">
-                    <a href="#" class="footerlogo"><img src="assets/images/Woroc-Logo.png" alt="Vinyl record Woroc." style="max-width: 100px; max-height: 60px;"></a>
-                    <div class="colitems">
-                        <div class="sub-title"><b>Адреса</b></div>
-                        <div class="col-item">Україна, м. Чернівці, вул. Глибоцька 2а</div>
-                        <div class="sub-title "><b>Розробник</b></div>
-                        <div class="col-item">Гаврилюк Василь&#169</div>
-                        <div class="sub-title"><b>E-mail</b></div>
-                        <div class="col-item"><a href="#">flamermanofficial@gmail.com</a></div>
-                    </div>
-                </div>
-                <div class="centersection">                        
-                    <div class="footerlogo"><a href="#"><img src="assets/images/Woroc-Logo.png" alt="Vinyl record Woroc." style="max-width: 100px; max-height: 60px;"></a></div>
-                    <div class="colitems">
-                        <div class="col-item"><a href="index.php">Головна</a></div>
-                        <div class="col-item"><a href="pages/catalog.php">Каталог</a></div>
-                        <div class="col-item"><a href="pages/cart.php">Кошик</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footerbottom">
-        </div>
-    </footer>
 </body>
 </html>

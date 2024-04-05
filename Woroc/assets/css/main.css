@@ -160,7 +160,9 @@ header .menu .search form .searchbutton:hover{
 
 .main div{
     margin-top: 25%;
-    text-align: center;
+    text-align: left;
+    padding-left: 10em;
+    padding-right: 10em;
 }
 
 .main div h1{

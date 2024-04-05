@@ -1,31 +1,70 @@
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('mobile-menu');
     const menu = document.querySelector('.menu');
-    const cartContainer = document.getElementById('products');
-    const cartPriceAndBuying = document.getElementById('priceandbuying');
+    let cartContainer = document.getElementById('products'); 
+    let cartPriceAndBuying = document.getElementById('priceandbuying'); 
+    let formContainer = document.getElementById('formContainer'); 
 
     menuToggle.addEventListener('click', function () {
         menu.classList.toggle('show');
     });
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    cartContainer.addEventListener('click', function (event) {
-        if (event.target.classList.contains('product-delete')) {
-
-            const indexToRemove = event.target.dataset.index;
-
-
-            cart.splice(indexToRemove, 1);
-
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            renderCart();
+    console.log(cart);
+    if (cart.length === 0){
+        renderEmptyCart();
+    }
+    else {
+        renderDefault();
+        console.log(cartContainer);
+        cartContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('product-delete')) {
+                const indexToRemove = event.target.dataset.index;
+                cart.splice(indexToRemove, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
         }
-    });
+        });
+        renderCart();
+    }
 
-    renderCart();
+    function renderEmptyCart(){
+        let main = document.getElementById("main");
+        
+        let cartEmpty = document.createElement('div');
+        cartEmpty.classList.add("cartEmpty");
+
+        cartEmpty.innerHTML =`
+            <h1>Ваш кошик пустий</h1>`;
+
+        main.appendChild(cartEmpty);
+    }
+
+    function renderDefault(){
+        formContainer.innerHTML = `
+                <div class="name">
+                    <div><label>Ваше ім'я:</label></div>
+                    <div><input type="text" name="name"></div>
+                </div>
+                <div class="phone-number">
+                    <div><label>Номер телeфону:</label></div>
+                    <div><input type="text" name="phone-number"></div>
+                </div>
+                <div class="email">
+                    <div><label>Email:</label></div>
+                    <div><input type="text" name="email"></div>
+                </div>
+                <div class="payment">
+                    <div>
+                        <input type="radio" id="cash" name="payment" checked>
+                        <label for="cash">Готівка</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="card" name="payment">
+                        <label for="card">Карта</label>
+                    </div>
+                </div>`;
+    }
 
     function renderCart() {
         cartContainer.innerHTML = '';
@@ -46,8 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="product-delete" data-index="${index}">Видалити з кошика</div>
             `;
             cartContainer.appendChild(cartItem);
-
-            totalSum += item.price;
+            totalSum += Number(item.price);
             
             
         });
@@ -63,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         totalSumElement.classList.add('price');
         totalSumElement.textContent = `Загальна сума: ${totalSum} ГРН.`;
         cartPriceAndBuying.appendChild(totalSumElement);
-
+        console.log(totalSum);
         const buyButton = document.createElement('div');
         buyButton.classList.add('buy');
         buyButton.addEventListener('click', function () {

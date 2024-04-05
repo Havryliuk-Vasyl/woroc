@@ -107,7 +107,18 @@
       cursor: pointer;
       background-color: rgb(173, 85, 255);
   }
+
+  .cartEmpty{
+    margin-top: 25%;
+  }
   
+  .go-to-catalog{
+    margin: 0.5em;
+    padding: 5%;
+    background-color:  rgb(173, 85, 255);
+    border-radius: 1.2em;
+  }
+
 .main {
     padding: 0 auto;
     min-height: 50em;
