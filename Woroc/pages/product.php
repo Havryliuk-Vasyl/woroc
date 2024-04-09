@@ -20,15 +20,7 @@
     </div>
   
     <?php
-<<<<<<< HEAD
     include("../templates/footer.php");
-=======
-<<<<<<< HEAD
-    include("../templates/footer.php");
-=======
-    include("../templates/header.php");
->>>>>>> 94781bd94791fefff90cd36a055a2e983c7c726d
->>>>>>> 568610d9a53f0823ba9ee3603c6d32a1a8063252
     ?>
 </body>
 </html>
