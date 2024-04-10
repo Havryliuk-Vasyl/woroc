@@ -1,11 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('mobile-menu');
-    const menu = document.querySelector('.menu');
     const playVinils = document.querySelectorAll(".playvinil");
-
-    menuToggle.addEventListener('click', function () {
-        menu.classList.toggle('show');
-    });
 
     playVinils.forEach(function(playVinil) {
         var screenWidth = window.innerWidth;

@@ -1,11 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('mobile-menu');
-    const menu = document.querySelector('.menu');
-
-    menuToggle.addEventListener('click', function () {
-        menu.classList.toggle('show');
-    });
-
     const productPage = JSON.parse(localStorage.getItem('productPage')) || [];
     const productContainer = document.getElementById('products');
 

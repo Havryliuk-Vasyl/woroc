@@ -1,13 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('mobile-menu');
-    const menu = document.querySelector('.menu');
     let cartContainer = document.getElementById('products'); 
     let cartPriceAndBuying = document.getElementById('priceandbuying'); 
     let formContainer = document.getElementById('formContainer'); 
-
-    menuToggle.addEventListener('click', function () {
-        menu.classList.toggle('show');
-    });
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     console.log(cart);

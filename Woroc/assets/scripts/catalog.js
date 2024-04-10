@@ -1,20 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log("OK!");
 
-    const menuToggle = document.getElementById('mobile-menu');
-    const menu = document.querySelector('.menu');
     const products = document.querySelector(".products");
 
-    menuToggle.addEventListener('click', function () {
-        menu.classList.toggle('show');
-    });
-
     var phpScriptPath = '../assets/database/selectProducts.php';
-
     var xhr = new XMLHttpRequest();
-
     xhr.open("POST", phpScriptPath, true);
-
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
@@ -52,12 +43,65 @@ document.addEventListener('DOMContentLoaded', function () {
                         });
                     }
                 });
+
+                document.getElementById("apply-filters").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const price = document.getElementById("price").value;
+                    const speed = document.getElementById("speed").value;
+                
+                    if (!price && !speed) {
+                        alert("Будь ласка, заповніть всі поля!");
+                        return;
+                    }
+                
+                    const filterData = {
+                        price,
+                        speed,
+                    };
+                
+                    console.log(filterData);
+                
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "../assets/database/selectProductsWithFilters.php", true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                var data = JSON.parse(xhr.responseText);
+                                console.log("OK");
+                                console.log(data);
+
+                                displayProducts(data, products);
+                
+                                const addToCartButtons = document.querySelectorAll('.playvinil-addtobasket');
+                                addToCartButtons.forEach(button => {
+                                    button.addEventListener('click', function(event) {
+                                        addToCart(event, data);
+                                    });
+                                });
+                
+                                const goToProductPage = document.querySelectorAll('.playvinil-container');
+                                goToProductPage.forEach(button => {
+                                    button.addEventListener('click', function(event) {
+                                        goToProduct(event, data);
+                                    });
+                                });
+                
+                            } else {
+                                console.error("Request failed:", xhr.status);
+                            }
+                        }
+                    };
+                
+                    xhr.send(JSON.stringify(filterData));
+                });                
+                  
             } else {
                 console.error("Request failed:", xhr.status);
             }
         }
     };
-
     xhr.send();
 });
 

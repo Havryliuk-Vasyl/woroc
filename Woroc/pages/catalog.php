@@ -13,6 +13,24 @@
     include("../templates/header.php");
     ?>
     <div class="main">
+        <div class="filters-and-search">
+            <form action="#" method="GET"> 
+                <div class="filter-section">
+                    <label for="price">Ціна (до):</label>
+                    <input type="number" id="price" name="price" min="0" placeholder="Максимальна ціна">
+                </div>
+                <div class="filter-section">
+                    <label for="speed">Швидкість обертання:</label>
+                    <select id="speed" name="speed">
+                        <option value="all">Всі</option>
+                        <option value="33">33 1/3 об/хв</option>
+                        <option value="45">45 об/хв</option>
+                        <option value="78">78 об/хв</option>
+                    </select>
+                </div>
+                <button id="apply-filters">Застосувати фільтри</button>
+            </form>
+        </div>
         <div class="products">
             <!-- <div class="playvinil">
                 <div class="playvinil-container">
