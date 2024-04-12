@@ -26,13 +26,15 @@
   }
   
   .filters-and-search {
-    max-width: 50em; /* Встановлюємо максимальну ширину в em */
-    margin: 0 auto; /* Центруємо за горизонтали */
+    max-width: 50em;
+    margin: 0 auto; 
     margin-top: 25%;
+    margin-left: 0;
     display: flex;
     flex-wrap: wrap; 
     border-radius: 5px; 
     padding: 1em;
+    align-items: first baseline;
 }
   
   .filter-section {
@@ -71,8 +73,9 @@
   
 
   .main .products {
-    min-width: 50em; /* Встановлюємо максимальну ширину в em */
-    margin: 0 auto; /* Центруємо за горизонтали */
+    min-width: min-content; 
+    max-width: 50em;
+    margin: 0 auto;
     margin-top: 25%;
     display: inline-flex;
     flex-direction: row;
@@ -86,6 +89,8 @@
     text-align: center;
     justify-content: center;
     padding: 0.5em;
+    min-height: 25em;
+    max-height: 25em;
 }
 
 .main .products .playvinil .playvinil-container {
@@ -132,137 +137,28 @@
 .main .products .playvinil .playvinil-addtobasket:hover{
     cursor: pointer;
 }
-
-  .footer{
-      background-color:rgb(260,260,260);
-      min-height: 1em;
-      color: black;
-      position: relative;
-      margin: 0;
-      bottom: 0 auto;
-      padding: 0.6em;
-      background-color: rgb(128, 128, 128, 0.05) ;
-  
-  }
-  
-  .footer .footertop {
-      max-width: auto;
-      display: flex;
-      justify-content: center;
-  }
-  
-  .footer .footertop .container {
-      display: inline-flex;
-      flex-direction: row;
-      justify-content: center;
-  }
-  
-  .footer .footertop .container .firstsection{
-      width: auto;
-      text-align: center;
-      margin: 1em;
-      background-color: rgb(245, 245, 245);
-      box-shadow:  0 0.1em 1em rgb(128, 128, 128, 0.5);
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .footer .footertop .container .firstsection .footerlogo {
-      position: relative;
-      margin: 0;
-      justify-content: center;
-  }
-  
-  .footer .footertop .container .firstsection .colitems {
-      margin: 1em;
-      padding-bottom: 1em;
-      min-width: 10em;
-  }
-  
-  
-  .footer .footertop .container .firstsection .colitems .sub-item{
-      margin-top: 1em;
-  }
-  
-  .footer .footertop .container .firstsection .colitems .col-item{
-      margin-bottom: 1em;
-  }
-  
-  
-  .footer .footertop .container .firstsection .colitems .col-item a{
-      text-decoration: none;
-      color: rgb(19, 19, 19);
-  }
-  
-  .footer .footertop .container .firstsection .colitems .col-item a:hover{
-      text-decoration: none;
-  }
-  
-  .footer .footertop .container .centersection{
-      margin: 1em;
-      width: auto;
-      background-color: rgb(245, 245, 245);
-      box-shadow:  0 0.1em 1em rgb(128, 128, 128, 0.5);
-      align-items: center;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .footer .footertop .container .centersection .footerlogo {
-      position: relative;
-      margin: 0;
-      justify-content: center;
-  }
-  
-  .footer .footertop .container .centersection .colitems {
-      margin: 1em;
-      padding-bottom: 1em;
-      min-width: 10em;
-  }
-  
-  
-  .footer .footertop .container .centersection .colitems .sub-item{
-      margin-top: 1em;
-  }
-  
-  .footer .footertop .container .centersection .colitems .col-item{
-      margin-bottom: 1em;
-  }
-  
-  
-  .footer .footertop .container .centersection .colitems .col-item a{
-      text-decoration: none;
-      color: rgb(19, 19, 19);
-  }
-  
-  
-  .footer .footertop .container .centersection .colitems .col-item a:hover{
-      text-decoration: none;
-      color: rgb(119, 119, 119);
-  }
-  
-  
   
   @media only screen and (max-width: 1024px) {      
       .main{
         flex-direction: column;
       }
 
+      .filters-and-search{
+        align-items: center;
+        margin-left: auto;
+      }
+
       .main .products .playvinil .playvinil-addtobasket{
           visibility: visible;
       }
       
-      .main .products {
+    .main .products {
         margin: 0;
-          flex-direction: row;
-      }
-  
-      .footer .footertop .container {
-          display: inline-flex;
-          flex-direction: column;
-          justify-content: center;
-          
-      }
-  }   
+        flex-direction: row;
+    }
+
+    .main .products .playvinil{
+        min-width: 10em;
+        max-width: 10em;
+    }
+}   

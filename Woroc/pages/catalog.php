@@ -28,6 +28,15 @@
                         <option value="78">78 об/хв</option>
                     </select>
                 </div>
+                <div class="filter-section">
+                    <label for="glasssupportdics">Підтримка для скла:</label>
+                    <select id="glasssupportdics" name="glasssupportdics">
+                        <option value="all">Всі</option>
+                        <option value="300">300</option>
+                        <option value="200">200</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
                 <button id="apply-filters">Застосувати фільтри</button>
             </form>
         </div>

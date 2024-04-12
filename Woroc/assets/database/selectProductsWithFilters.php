@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $price = isset($request->price) ? $request->price : null;
     $speed = isset($request->speed) ? $request->speed : null;
+    $glasssupportdics = isset($request->glasssupportdics) ? $request->glasssupportdics : null;
 
     $sql = "SELECT p.id, p.name, p.price, ph.photo_path FROM products p 
             JOIN photos ph ON p.id = ph.product_id 
@@ -18,6 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($speed !== null && $speed != "all") {
         $whereClause .= " AND pd.electronicspeedchange = ?";
+    }
+
+    if($glasssupportdics !== null && $glasssupportdics != "all"){
+        $whereClause .= " AND pd.glasssupportdics = ?";
     }
 
     if ($whereClause) {
@@ -41,6 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         if ($speed !== null && $speed != "all") {
             $stmt->bind_param("i", $speed);
+        }
+        if ($glasssupportdics !== null && $glasssupportdics != "all"){
+            $stmt->bind_param("i", $glasssupportdics);
         }
 
         $stmt->execute();

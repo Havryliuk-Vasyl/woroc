@@ -48,8 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     event.preventDefault();
                     const price = document.getElementById("price").value;
                     const speed = document.getElementById("speed").value;
+                    const glasssupportdics = document.getElementById("glasssupportdics").value;
                 
-                    if (!price && !speed) {
+                    if (!price && !speed && !glasssupportdics) {
                         alert("Будь ласка, заповніть всі поля!");
                         return;
                     }
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const filterData = {
                         price,
                         speed,
+                        glasssupportdics
                     };
                 
                     console.log(filterData);
@@ -73,21 +75,37 @@ document.addEventListener('DOMContentLoaded', function () {
                                 console.log(data);
 
                                 displayProducts(data, products);
-                
-                                const addToCartButtons = document.querySelectorAll('.playvinil-addtobasket');
-                                addToCartButtons.forEach(button => {
-                                    button.addEventListener('click', function(event) {
-                                        addToCart(event, data);
-                                    });
-                                });
-                
+
                                 const goToProductPage = document.querySelectorAll('.playvinil-container');
                                 goToProductPage.forEach(button => {
                                     button.addEventListener('click', function(event) {
                                         goToProduct(event, data);
                                     });
                                 });
+
+                                const addToCartButtons = document.querySelectorAll('.playvinil-addtobasket');
+                                addToCartButtons.forEach(button => {
+                                    button.addEventListener('click', function(event) {
+                                        addToCart(event, data);
+                                    });
+                                });
+
+                                const playVinils = document.querySelectorAll(".playvinil");
+                                playVinils.forEach(function (playVinil) {
+                                    var screenWidth = window.innerWidth;
+                                    if (screenWidth > 1024) {
+                                        playVinil.addEventListener("mouseover", function () {
+                                            var addToBasket = playVinil.querySelector(".playvinil-addtobasket");
+                                            addToBasket.style.visibility = 'visible';
+                                        });
                 
+                                        playVinil.addEventListener("mouseout", function () {
+                                            var addToBasket = playVinil.querySelector(".playvinil-addtobasket");
+                                            addToBasket.style.visibility = 'hidden';
+                                        });
+                                    }
+                                });
+
                             } else {
                                 console.error("Request failed:", xhr.status);
                             }

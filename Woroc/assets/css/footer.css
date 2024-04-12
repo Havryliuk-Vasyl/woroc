@@ -1,0 +1,122 @@
+.footer{
+    background-color:rgb(260,260,260);
+    min-height: 1em;
+    color: black;
+    position: relative;
+    margin: 0;
+    bottom: 0 auto;
+    padding: 0.6em;
+    background-color: rgb(128, 128, 128, 0.05) ;
+
+}
+
+.footer .footertop {
+    max-width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.footer .footertop .container {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer .footertop .container .firstsection{
+    width: auto;
+    text-align: center;
+    margin: 1em;
+    background-color: rgb(245, 245, 245);
+    box-shadow:  0 0.1em 1em rgb(128, 128, 128, 0.5);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .footertop .container .firstsection .footerlogo {
+    position: relative;
+    margin: 0;
+    justify-content: center;
+}
+
+.footer .footertop .container .firstsection .colitems {
+    margin: 1em;
+    padding-bottom: 1em;
+    min-width: 10em;
+}
+
+
+.footer .footertop .container .firstsection .colitems .sub-item{
+    margin-top: 1em;
+}
+
+.footer .footertop .container .firstsection .colitems .col-item{
+    margin-bottom: 1em;
+}
+
+
+.footer .footertop .container .firstsection .colitems .col-item a{
+    text-decoration: none;
+    color: rgb(19, 19, 19);
+}
+
+.footer .footertop .container .firstsection .colitems .col-item a:hover{
+    text-decoration: none;
+}
+
+.footer .footertop .container .centersection{
+    margin: 1em;
+    width: auto;
+    background-color: rgb(245, 245, 245);
+    box-shadow:  0 0.1em 1em rgb(128, 128, 128, 0.5);
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .footertop .container .centersection .footerlogo {
+    position: relative;
+    margin: 0;
+    justify-content: center;
+}
+
+.footer .footertop .container .centersection .colitems {
+    margin: 1em;
+    padding-bottom: 1em;
+    min-width: 10em;
+}
+
+
+.footer .footertop .container .centersection .colitems .sub-item{
+    margin-top: 1em;
+}
+
+.footer .footertop .container .centersection .colitems .col-item{
+    margin-bottom: 1em;
+}
+
+
+.footer .footertop .container .centersection .colitems .col-item a{
+    text-decoration: none;
+    color: rgb(19, 19, 19);
+}
+
+
+.footer .footertop .container .centersection .colitems .col-item a:hover{
+    text-decoration: none;
+    color: rgb(119, 119, 119);
+}
+
+.footer .footertop .container .centersection .colitems .col-item img{
+    width: 1em;
+    height: 1em;
+}
+
+@media only screen and (max-width: 1024px) {
+    .footer .footertop .container {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
