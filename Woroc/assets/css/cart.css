@@ -84,6 +84,16 @@
     cursor: pointer;
 }
 
+.main .products .product .product-discount{
+    color: white;
+    font-weight: bold; 
+    background-color: red;
+    border-radius: 5px; 
+    padding: 0.5em;
+    text-align: center;
+    max-width: auto;
+}
+
 .main .products .product .product-price{
     padding: 0.5em;
 }

@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 20px;
+  }
+  
+  *::selection{
+      background-color: rgb(219, 219, 219);
+  }
+  
+  body, html{
+      margin: 0;
+      padding: 0;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .main {
+      padding: 0 auto;
+      min-height: 50em;
+      background-image: url("../images/Woroc-background.png");
+      background-size: 50%;
+      background-position-x: center;
+      background-repeat: no-repeat;  
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+  
+  }
+  
+  .main div{
+      margin-top: 25%;
+      text-align: left;
+      padding-left: 10em;
+      padding-right: 10em;
+  }
+  
+  .main div h1{
+      font-size: 3em;
+  }
+  

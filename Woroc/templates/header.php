@@ -14,6 +14,7 @@
                     <li><a href="../index.php"><img src="../assets/images/icons/home-icon.png" alt="home">Головна</a></li>
                     <li><a href="../pages/catalog.php"><img src="../assets/images/icons/vinyl-record-player-icon.png" alt="catalog">Каталог</a></li>
                     <li><a href="../pages/cart.php"><img src="../assets/images/icons/cart-icon.png" alt="cart">Кошик</a></li>
+                    <li><a href="../pages/conditionOfSiteOperation.php">Умови</a></li>
                 </ul>
             </div>
         </div>

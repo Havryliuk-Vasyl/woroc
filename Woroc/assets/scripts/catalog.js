@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 document.getElementById("apply-filters").addEventListener("click", function(event) {
                     event.preventDefault();
+                    const name = document.getElementById("name").value;
                     const price = document.getElementById("price").value;
                     const speed = document.getElementById("speed").value;
                     const glasssupportdics = document.getElementById("glasssupportdics").value;
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 
                     const filterData = {
+                        name,
                         price,
                         speed,
                         glasssupportdics
@@ -134,6 +136,7 @@ function addToCart(event, dataArr) {
     const productName = dataArr[productID - 1].name;
     const productPrice = dataArr[productID - 1].price;
     const productImage = dataArr[productID - 1].photo_path;
+    const productDiscount = dataArr[productID - 1].discount;
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -142,6 +145,7 @@ function addToCart(event, dataArr) {
         name: productName,
         price: productPrice,
         image: productImage,
+        discount: productDiscount
     });
 
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -185,6 +189,19 @@ function createProductItemElement(item) {
     const cartItem = document.createElement('div');
     cartItem.classList.add('playvinil');
     cartItem.setAttribute('id', item.id);
+    if (item.discount!= 0){
+        item.price = item.price * (100 - item.discount) / 100;
+        cartItem.innerHTML = `
+            <div class="playvinil-container">
+                <div class="playvinil-photo"><img src="../assets/images/${item.photo_path}" alt="w" style="width: 10em; height: 10em;"></div>
+                <div class="playvinil-name">${item.name}</div>
+                <div class="playvinil-discount">-${item.discount}%</div>
+                <div class="playvinil-price">${item.price} ГРН.</div>
+            </div>
+            <div class="playvinil-addtobasket" id="${item.id}">Додати у кошик</div>`;
+    }
+    else{
+        
     cartItem.innerHTML = `
         <div class="playvinil-container">
             <div class="playvinil-photo"><img src="../assets/images/${item.photo_path}" alt="w" style="width: 10em; height: 10em;"></div>
@@ -192,5 +209,6 @@ function createProductItemElement(item) {
             <div class="playvinil-price">${item.price} ГРН.</div>
         </div>
         <div class="playvinil-addtobasket" id="${item.id}">Додати у кошик</div>`;
+    }
     return cartItem;
 }

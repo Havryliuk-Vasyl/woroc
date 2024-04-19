@@ -89,6 +89,20 @@
       max-width: auto;
   }
   
+.main .products .playvinil .playvinil-infomation .playvinil-discount{
+    color: white;
+    font-weight: bold; 
+    background-color: red;
+    border-radius: 5px; 
+    padding: 0.5em;
+    text-align: center;
+    max-width: auto;
+}
+
+.main .products .playvinil .playvinil-infomation h4{
+    margin: 0;
+}
+  
   .main .products .playvinil .playvinil-name:hover{
       cursor: pointer;
   }

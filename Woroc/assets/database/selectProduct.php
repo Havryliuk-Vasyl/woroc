@@ -9,10 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $productID = $_GET['id'];
 
-    $sql = "SELECT p.id, p.name, p.price, GROUP_CONCAT(ph.photo_path) AS photo_paths, pd.description, pd.type, pd.model, pd.glasssupportdics, pd.electronicspeedchange, pd.bluetooth 
+    $sql = "SELECT p.id, p.name, p.price, GROUP_CONCAT(ph.photo_path) AS photo_paths,
+            pd.description, pd.type, pd.model, pd.glasssupportdics, pd.electronicspeedchange, pd.bluetooth, COALESCE(d.discount, 0) AS discount
         FROM products p 
         JOIN photos ph ON p.id = ph.product_id 
         JOIN products_description pd ON p.id = pd.product_id
+        LEFT JOIN discount d ON p.id = d.product_id
         WHERE p.id = ?;
     ";
     

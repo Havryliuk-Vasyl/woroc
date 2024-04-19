@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
         
         const photoPaths = data.photo_paths.split(',');
 
+        if (data.discount!= 0){
+            data.price = data.price * (100 - data.discount) / 100;
+        }
+    
         productHTML += `
             <div class="playvinil-photos">
         `;
@@ -46,52 +50,55 @@ document.addEventListener('DOMContentLoaded', function () {
         productHTML += `
             </div>
             <div class="playvinil-infomation">
-                <div class="playvinil-name"><h2>${data.name}<h2></div>
-                <div class="playvinil-price"><b>${data.price} ГРН. </b></div>
-                <div class="playvinil-describe">${data.description}</div>
-                <table class="infdot">
-                    <tbody>
-                        <tr>
-                            <td class="firstfield">Тип:</td>
-                            <td class="secondfield">${data.type}</td>
-                        </tr>
-                        <tr>
-                            <td class="firstfield">Модель:</td>
-                            <td class="secondfield">${data.model}</td>
-                        </tr>
-                        <tr>
-                            <td class="firstfield">Скляний опорний диск:</td>
-                            <td class="secondfield">${data.glasssupportdics} мм</td>
-                        </tr>
-                        <tr>
-                            <td class="firstfield">Швидкість:</td>
-                            <td class="secondfield">${data.electronicspeedchange} об</td>
-                        </tr>
-                        <tr>
-                            <td class="firstfield">Bluetooth:</td>
-                            <td class="secondfield">${data.bluetooth}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="playvinil-addtobasket">Додати у кошик</div>
-            </div>
-        `;
-        
+                <div class="playvinil-name"><h2>${data.name}<h2></div>`
+        if (data.discount > 0){
+            productHTML += `<div class="playvinil-discount"><h4>-${data.discount}%</h4></div>`;
+        }
+            productHTML += `
+            <div class="playvinil-price"><b>${data.price} ГРН. </b></div>
+            <div class="playvinil-describe">${data.description}</div>
+            <table class="infdot">
+                <tbody>
+                    <tr>
+                        <td class="firstfield">Тип:</td>
+                        <td class="secondfield">${data.type}</td>
+                    </tr>
+                    <tr>
+                        <td class="firstfield">Модель:</td>
+                        <td class="secondfield">${data.model}</td>
+                    </tr>
+                    <tr>
+                        <td class="firstfield">Скляний опорний диск:</td>
+                        <td class="secondfield">${data.glasssupportdics} мм</td>
+                    </tr>
+                    <tr>
+                        <td class="firstfield">Швидкість:</td>
+                        <td class="secondfield">${data.electronicspeedchange} об</td>
+                    </tr>
+                    <tr>
+                        <td class="firstfield">Bluetooth:</td>
+                        <td class="secondfield">${data.bluetooth}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="playvinil-addtobasket">Додати у кошик</div>
+        </div>
+    `;
         productDiv.innerHTML = productHTML;
-        
         productContainer.appendChild(productDiv);
         const addToCartButton = productDiv.querySelector('.playvinil-addtobasket');
         addToCartButton.addEventListener('click', function (event) {
-            addToCart(event, data.id, data.name, data.price, photoPaths[0]);
+            addToCart(event, data.id, data.name, data.price, photoPaths[0], data.discount);
         });                
     }
 });
 
-function addToCart(event, id, name, price, photoPath) {
+function addToCart(event, id, name, price, photoPath, discount) {
     const productId = id;
     const productName = name;
     const productPrice = price;
     const productImage = photoPath;
+    const productDiscount =discount;
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -102,6 +109,7 @@ function addToCart(event, id, name, price, photoPath) {
         name: productName,
         price: productPrice,
         image: productImage,
+        discount: productDiscount
     });
 
     localStorage.setItem('cart', JSON.stringify(cart));

@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderEmptyCart(){
         let main = document.getElementById("main");
-        
+        main.innerHTML = ``;
+
         let cartEmpty = document.createElement('div');
         cartEmpty.classList.add("cartEmpty");
 
@@ -61,50 +62,82 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function renderCart() {
-        cartContainer.innerHTML = '';
-        cartPriceAndBuying.innerHTML = '';
+            if (cart.length === 0){ 
+                renderEmptyCart();
+                return;
+            }
 
-        let totalSum = 0;
+            cartContainer.innerHTML = '';
+            cartPriceAndBuying.innerHTML = '';
 
-        cart.forEach((item, index) => {
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('product');
-            console.log(item.image);
-            cartItem.innerHTML = `
-                <div class="product-container" id="${item.id}">
-                    <div class="product-photo"><img src="../assets/images/${item.image}" alt="w" style="width: 10em; height: 10em;"></div>
-                    <div class="product-name">${item.name}</div>
-                    <div class="product-price">${item.price} ГРН.</div>
-                </div>
-                <div class="product-delete" data-index="${index}">Видалити з кошика</div>
-            `;
-            cartContainer.appendChild(cartItem);
-            totalSum += Number(item.price);
-            
-            
-        });
+            let totalSum = 0;
+            let totalSumDiscount = false;
 
-        const goToProductPage = document.querySelectorAll('.product-container');
-        goToProductPage.forEach(button => {
-            button.addEventListener('click', function(event) {
-                goToProduct(event, cart);
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('product');
+                console.log(item.image);
+                cartItem.innerHTML = `
+                    <div class="product-container" id="${item.id}">
+                        <div class="product-photo"><img src="../assets/images/${item.image}" alt="w" style="width: 10em; height: 10em;"></div>
+                        <div class="product-name">${item.name}</div>`;
+                if (item.discount!= 0){
+                    cartItem.innerHTML += `<div class="product-discount">-${item.discount}%</div>`;
+                }
+                
+                cartItem.innerHTML +=`
+                        <div class="product-price">${item.price} ГРН.</div>
+                    </div>
+                    <div class="product-delete" data-index="${index}">Видалити з кошика</div>
+                `;
+
+                cartContainer.appendChild(cartItem);
+                totalSum += Number(item.price);
             });
-        });
 
-        const totalSumElement = document.createElement('div');
-        totalSumElement.classList.add('price');
-        totalSumElement.textContent = `Загальна сума: ${totalSum} ГРН.`;
-        cartPriceAndBuying.appendChild(totalSumElement);
-        console.log(totalSum);
-        const buyButton = document.createElement('div');
-        buyButton.classList.add('buy');
-        buyButton.addEventListener('click', function () {
-            placeOrder();
-            renderCart();
-        });
+            console.log("Start adding events");
+            const goToProductPage = document.querySelectorAll('.product-container');
+            goToProductPage.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    goToProduct(event, cart);
+                });
+            });
 
-        buyButton.textContent = 'Замовити';
-        cartPriceAndBuying.appendChild(buyButton);
+            const totalSumElement = document.createElement('div');
+            totalSumElement.classList.add('price');
+
+            console.log(totalSum);
+            if (totalSum > 50000) {
+                totalSum = totalSum * (100 - 5) / 100;
+                totalSumDiscount = true;
+            }
+            else {
+                totalSumDiscount = false;
+            }
+
+            totalSumElement.textContent = `Загальна сума: ${totalSum} ГРН.`;
+            console.log(totalSum);
+            cartPriceAndBuying.appendChild(totalSumElement);
+            const buyButton = document.createElement('div');
+            buyButton.classList.add('buy');
+            buyButton.textContent = 'Замовити';
+            
+            buyButton.addEventListener('click', function () {
+                placeOrder();
+                renderEmptyCart();
+            });
+            
+            cartPriceAndBuying.appendChild(buyButton);
+
+            if (totalSumDiscount)
+            {
+                const discountDiv = document.createElement('div');
+                            
+                discountDiv.textContent = 'Вам надана знижка 5%, тому що ціна кошика більша за 50000 грн';
+                            
+                cartPriceAndBuying.appendChild(discountDiv);
+                            
+            }
     }
 });
 
@@ -140,7 +173,8 @@ function placeOrder() {
         paymentMethod: paymentMethod,
         cart: cart,
     };
-
+    console.log(orderDetails);
+    
     sendEmail(orderDetails);
 
     localStorage.removeItem('cart');

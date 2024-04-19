@@ -14,7 +14,11 @@
     ?>
     <div class="main">
         <div class="filters-and-search">
-            <form action="#" method="GET"> 
+            <form action="#" method="GET">
+                <div class="filter-section">
+                    <label for="price">Назва програвача:</label>
+                    <input type="text" id="name" placeholder="Назва програвача">
+                </div> 
                 <div class="filter-section">
                     <label for="price">Ціна (до):</label>
                     <input type="number" id="price" name="price" min="0" placeholder="Максимальна ціна">
@@ -41,14 +45,6 @@
             </form>
         </div>
         <div class="products">
-            <!-- <div class="playvinil">
-                <div class="playvinil-container">
-                    <div class="playvinil-photo"><img src="../assets/images/Pro-Ject T1 Phono SB Walnut1.png.png" alt="w" style="width: 10em; height: 10em;"></div>
-                    <div class="playvinil-name">Pro-Ject T1 Phono SB Walnut</div>
-                    <div class="playvinil-price"><b>19404 ГРН.</b></div>
-                </div>
-                <div class="playvinil-addtobasket">Додати у кошик</div>
-            </div> -->
         </div>
     </div>
 

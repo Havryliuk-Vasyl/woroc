@@ -49,7 +49,8 @@
   }
   
   .filters-and-search select,
-  .filters-and-search input[type="number"] {
+  .filters-and-search input[type="number"],
+  .filters-and-search input[type="text"] {
     padding: 0.5em;
     border: 1px solid #ccc; 
     border-radius: 3px;
@@ -119,6 +120,16 @@
 
 .main .products .playvinil .playvinil-name:hover{
     cursor: pointer;
+}
+
+.main .products .playvinil .playvinil-discount{
+    color: white;
+    font-weight: bold; 
+    background-color: red;
+    border-radius: 5px; 
+    padding: 0.5em;
+    text-align: center;
+    max-width: auto;
 }
 
 .main .products .playvinil .playvinil-price{
